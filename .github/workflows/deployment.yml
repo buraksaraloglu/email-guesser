@@ -8,7 +8,6 @@ on:
 jobs:
   lint:
     name: ⬣ ESLint
-    if: needs.changes.outputs.DEPLOYABLE == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: 🛑 Cancel Previous Runs
@@ -30,7 +29,6 @@ jobs:
 
   typecheck:
     name: ʦ TypeScript
-    if: needs.changes.outputs.DEPLOYABLE == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: 🛑 Cancel Previous Runs
@@ -52,7 +50,6 @@ jobs:
 
   jest:
     name: 🃏 Jest
-    if: needs.changes.outputs.DEPLOYABLE == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: 🛑 Cancel Previous Runs
