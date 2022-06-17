@@ -17,6 +17,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "jest",
+    "typecheck": "tsc -b",
     "lint": "eslint src --max-warnings=0"
   },
   "dependencies": {
