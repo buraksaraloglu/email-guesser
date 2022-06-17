@@ -18,7 +18,7 @@
     "serve": "vite preview",
     "test": "jest",
     "typecheck": "tsc -b",
-    "lint": "eslint src --max-warnings=0"
+    "lint": "eslint src"
   },
   "dependencies": {
     "daisyui": "^2.15.3",
