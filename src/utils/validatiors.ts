@@ -6,5 +6,7 @@ export const isValidUrl = (url: string) => {
 
 export const isValidFullName = (fullName: string): boolean => {
   const regex = /^[a-zA-Z ]+$/;
-  return regex.test(fullName) && fullName.split(' ').length > 1;
+  const fullNameToTest = fullName.trim();
+
+  return fullNameToTest.split(' ').length > 1 && regex.test(fullNameToTest);
 };

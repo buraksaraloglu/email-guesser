@@ -1,10 +1,14 @@
+import { ErrorBoundary } from 'react-error-boundary';
+
 import Layout from 'containers/Layout';
 import GuesserContainer from 'containers/GuesserContainer';
 
 const App = () => {
   return (
     <Layout>
-      <GuesserContainer />
+      <ErrorBoundary FallbackComponent={() => <>something happened</>}>
+        <GuesserContainer />
+      </ErrorBoundary>
     </Layout>
   );
 };

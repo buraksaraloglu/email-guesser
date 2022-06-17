@@ -45,10 +45,13 @@ const GuesserContainer = () => {
   return (
     <div className="p-6 bg-gray-200 dark:bg-gray-800 rounded-3xl lg:p-8">
       <h1 className="mb-5 text-xl font-medium">Email Guesser</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full ">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-1 w-full transition-all duration-200 sm:gap-4"
+      >
         <Input
           label="Full name"
-          placeholder="Enter your full name"
+          placeholder="Enter a full name (e.g. John Doe)"
           disabled={loading}
           {...register(FORM_KEYS.fullName, {
             required: 'Full name is required',
@@ -64,16 +67,16 @@ const GuesserContainer = () => {
         />
         <Input
           label="Company URL"
-          placeholder="Enter company URL"
+          placeholder="Enter a company URL (e.g. babbel.com)"
           disabled={loading}
           {...register(FORM_KEYS.domainUrl, {
-            required: 'Domain URL is required',
+            required: 'Company URL is required',
             maxLength: {
               value: MAX_LENGTHS.DOMAIN_URL,
-              message: 'Domain URL is too long',
+              message: 'Company URL is too long',
             },
             validate: {
-              invalid: (v) => isValidUrl(v) || 'Domain URL is invalid',
+              invalid: (v) => isValidUrl(v) || 'Company URL is invalid',
             },
           })}
           error={errors.domainUrl?.message}

@@ -20,15 +20,16 @@ const Input = forwardRef(
   ) => {
     return (
       <div className="w-full form-control">
-        <label htmlFor={name} className="label">
-          <span className="label-text">{label}</span>
+        <label htmlFor={name} className="label label-text">
+          {label}
         </label>
         <input
           ref={ref}
+          id={name}
           className={classNames(
             'w-full',
             'input',
-            ' input-bordered',
+            'input-bordered',
             error && 'input-error',
             disabled && 'input-disabled'
           )}
