@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { guessEmail } from 'api/guessEmail';
 import { isValidFullName, isValidUrl } from 'utils/validatiors';
@@ -6,7 +7,6 @@ import type { IFormData } from 'containers/GuesserContainer';
 
 export const useGuessEmail = () => {
   const [data, setData] = useState<Set<string>>(() => new Set());
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const fetchData = async (requestBody: IFormData) => {
@@ -33,10 +33,10 @@ export const useGuessEmail = () => {
 
       setData((prevEmails) => prevEmails.add(email));
     } catch (error: any) {
-      setError(error);
+      toast(error.message, { type: 'error', autoClose: 3000 });
     }
     setLoading(false);
   };
 
-  return { data: Array.from(data).reverse(), loading, error, fetchData };
+  return { data: Array.from(data).reverse(), loading, fetchData };
 };

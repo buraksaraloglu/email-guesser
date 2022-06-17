@@ -1,12 +1,14 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useGuessEmail } from 'hooks/useGuessEmail';
-import Input from 'components/Input';
 import { classNames } from 'utils';
 import { isValidFullName, isValidUrl } from 'utils/validatiors';
 import { MAX_LENGTHS } from 'utils/constants';
+import Input from 'components/Input';
 import GuessResultContainer from './GuessResult';
+import Checkbox from 'components/Checkbox';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 enum FORM_KEYS {
   fullName = 'fullName',
@@ -27,12 +29,20 @@ const GuesserContainer = () => {
     reset,
   } = useForm<IFormData>();
 
+  const [shouldKeepCompanyUrl, setShouldKeepCompanyUrl] = useLocalStorage(
+    'shouldKeepCompanyUrl',
+    JSON.stringify(false)
+  );
+
   const { data: guessedEmails, loading, fetchData } = useGuessEmail();
 
   const onSubmit = async (data: IFormData) => {
     try {
       await fetchData(data);
-      reset();
+      reset({
+        [FORM_KEYS.fullName]: '',
+        ...(!shouldKeepCompanyUrl ? { [FORM_KEYS.domainUrl]: '' } : {}),
+      });
     } catch (error) {
       return;
     }
@@ -80,6 +90,13 @@ const GuesserContainer = () => {
             },
           })}
           error={errors.domainUrl?.message}
+        />
+        <Checkbox
+          checked={shouldKeepCompanyUrl}
+          onChange={(e) => setShouldKeepCompanyUrl(e.target.checked)}
+          label="Keep company URL"
+          disabled={loading}
+          name="keepCompanyUrl"
         />
 
         <button type="submit" className={classNames('btn', 'btn-primary', loading && 'loading btn-disabled')}>

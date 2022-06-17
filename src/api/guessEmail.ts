@@ -10,11 +10,11 @@ export const guessEmail = async ({ fullName, domainUrl }: { fullName: string; do
       body: JSON.stringify({ fullName, domainUrl }),
     });
 
-    if (!response.ok) {
-      throw new Error(`${response.status} ${response.statusText}`);
-    }
-
     const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(`${response.status} ${data.error ?? response.statusText}`);
+    }
 
     return data;
   } catch (error) {

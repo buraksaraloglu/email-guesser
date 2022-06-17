@@ -3,4 +3,4 @@ export const MAX_LENGTHS = {
   DOMAIN_URL: 253,
 };
 
-export const EMAIL_GUESSER_SERVICE_URL = 'https://email-guesser-service.fly.dev';
+export const EMAIL_GUESSER_SERVICE_URL = import.meta.env.VITE_APP_EMAIL_GUESSER_SERVICE_URL ?? 'http://localhost:8080';
