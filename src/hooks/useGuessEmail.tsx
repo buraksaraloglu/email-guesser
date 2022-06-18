@@ -3,13 +3,13 @@ import { toast } from 'react-toastify';
 
 import { guessEmail } from 'api/guessEmail';
 import { isValidFullName, isValidUrl } from 'utils/validatiors';
-import type { IFormData } from 'containers/GuesserContainer';
+import type { IGuessEmailForm } from 'utils/types';
 
 export const useGuessEmail = () => {
   const [data, setData] = useState<Set<string>>(() => new Set());
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async (requestBody: IFormData) => {
+  const fetchData = async (requestBody: IGuessEmailForm) => {
     try {
       if (!isValidFullName(requestBody.fullName)) {
         throw new Error('Invalid full name');

@@ -1,6 +1,7 @@
 import { EMAIL_GUESSER_SERVICE_URL } from 'utils/constants';
+import type { IGuessEmailForm } from 'utils/types';
 
-export const guessEmail = async ({ fullName, domainUrl }: { fullName: string; domainUrl: string }) => {
+export const guessEmail = async ({ fullName, domainUrl }: IGuessEmailForm) => {
   try {
     const response = await fetch(`${EMAIL_GUESSER_SERVICE_URL}/v1/guess`, {
       method: 'POST',

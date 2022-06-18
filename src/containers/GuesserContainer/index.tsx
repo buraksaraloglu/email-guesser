@@ -1,24 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useGuessEmail } from 'hooks/useGuessEmail';
 import { classNames } from 'utils';
 import { isValidFullName, isValidUrl } from 'utils/validatiors';
 import { MAX_LENGTHS } from 'utils/constants';
+import { GUESS_EMAIL_FORM_KEYS, IGuessEmailForm } from 'utils/types';
 import Input from 'components/Input';
 import GuessResultContainer from './GuessResult';
 import Checkbox from 'components/Checkbox';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-
-enum FORM_KEYS {
-  fullName = 'fullName',
-  domainUrl = 'domainUrl',
-}
-
-export interface IFormData {
-  fullName: string;
-  domainUrl: string;
-}
 
 const GuesserContainer = () => {
   const {
@@ -27,7 +18,7 @@ const GuesserContainer = () => {
     formState: { errors },
     setFocus,
     reset,
-  } = useForm<IFormData>();
+  } = useForm<IGuessEmailForm>();
 
   const [shouldKeepCompanyUrl, setShouldKeepCompanyUrl] = useLocalStorage(
     'shouldKeepCompanyUrl',
@@ -36,12 +27,12 @@ const GuesserContainer = () => {
 
   const { data: guessedEmails, loading, fetchData } = useGuessEmail();
 
-  const onSubmit = async (data: IFormData) => {
+  const onSubmit = async (data: IGuessEmailForm) => {
     try {
       await fetchData(data);
       reset({
-        [FORM_KEYS.fullName]: '',
-        ...(!shouldKeepCompanyUrl ? { [FORM_KEYS.domainUrl]: '' } : {}),
+        [GUESS_EMAIL_FORM_KEYS.fullName]: '',
+        ...(!shouldKeepCompanyUrl ? { [GUESS_EMAIL_FORM_KEYS.domainUrl]: '' } : {}),
       });
     } catch (error) {
       return;
@@ -49,7 +40,7 @@ const GuesserContainer = () => {
   };
 
   useEffect(() => {
-    setFocus(FORM_KEYS.fullName);
+    setFocus(GUESS_EMAIL_FORM_KEYS.fullName);
   }, [setFocus]);
 
   return (
@@ -63,7 +54,7 @@ const GuesserContainer = () => {
           label="Full name"
           placeholder="Enter a full name (e.g. John Doe)"
           disabled={loading}
-          {...register(FORM_KEYS.fullName, {
+          {...register(GUESS_EMAIL_FORM_KEYS.fullName, {
             required: 'Full name is required',
             maxLength: {
               value: MAX_LENGTHS.FULL_NAME,
@@ -79,7 +70,7 @@ const GuesserContainer = () => {
           label="Company URL"
           placeholder="Enter a company URL (e.g. babbel.com)"
           disabled={loading}
-          {...register(FORM_KEYS.domainUrl, {
+          {...register(GUESS_EMAIL_FORM_KEYS.domainUrl, {
             required: 'Company URL is required',
             maxLength: {
               value: MAX_LENGTHS.DOMAIN_URL,
