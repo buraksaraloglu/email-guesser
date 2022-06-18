@@ -49,7 +49,7 @@ const GuesserContainer = () => {
       >
         <Input
           label="Full name"
-          placeholder="Enter a full name (e.g. John Doe)"
+          placeholder="Enter a full name (e.g. Jane Doe)"
           disabled={loading}
           {...register(GUESS_EMAIL_FORM_KEYS.fullName, {
             required: 'Full name is required',

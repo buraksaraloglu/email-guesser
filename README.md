@@ -1,10 +1,21 @@
 # email-guesser
 
-tbd
+This project allows users to find email addresses from full name and company URL.
+
+## Key Features
+
+- Form validation
+- TailwindCSS for styling
 
 ## Getting Started
 
-### Install
+### How to run the project locally
+
+Clone the project into a new directory:
+
+```bash
+git clone https://github.com/buraksaraloglu/email-guesser.git
+```
 
 Access the project directory.
 
@@ -41,7 +52,3 @@ npm run build
 ```bash
 npm run test
 ```
-
-## License
-
-This project is licensed under the MIT License.
