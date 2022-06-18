@@ -20,10 +20,7 @@ const GuesserContainer = () => {
     reset,
   } = useForm<IGuessEmailForm>();
 
-  const [shouldKeepCompanyUrl, setShouldKeepCompanyUrl] = useLocalStorage(
-    'shouldKeepCompanyUrl',
-    JSON.stringify(false)
-  );
+  const [shouldKeepCompanyUrl, setShouldKeepCompanyUrl] = useLocalStorage('shouldKeepCompanyUrl', false);
 
   const { data: guessedEmails, loading, fetchData } = useGuessEmail();
 

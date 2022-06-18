@@ -5,6 +5,14 @@ import { setupServer } from 'msw/node';
 import { guessEmailMock } from 'mocks/guessEmail';
 import GuesserContainer from '.';
 
+jest.mock('utils/constants', () => ({
+  MAX_LENGTHS: {
+    FULL_NAME: 20,
+    DOMAIN_URL: 253,
+  },
+  EMAIL_GUESSER_SERVICE_URL: 'http://localhost:8000',
+}));
+
 jest.mock('use-clipboard-api', () => {
   const useClipboard = jest.fn();
   useClipboard.mockImplementation(() => ['', jest.fn()]);

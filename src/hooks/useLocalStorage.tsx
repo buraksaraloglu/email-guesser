@@ -6,7 +6,7 @@ const getItemFromLocalStorage = (key: string) => {
   return item ? JSON.parse(item) : null;
 };
 
-export const useLocalStorage = (key: string, initialValue: string) => {
+export const useLocalStorage = (key: string, initialValue: any) => {
   const [storedValue, setStoredValue] = useState(() => getItemFromLocalStorage(key) ?? initialValue);
 
   const setValue = (value: any) => {
