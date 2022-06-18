@@ -24,7 +24,7 @@ const Alert = (props: IAlert) => {
       <div className="block">
         {title && <h3 className="font-bold">{title}</h3>}
         <div className="text-xs">{error.message}</div>
-        <div className="text-xs">{error.stack}</div>
+        {error.stack && <div className="text-xs">{error.stack}</div>}
       </div>
     </div>
   );
