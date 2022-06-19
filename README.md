@@ -7,6 +7,8 @@ Please visit the [backend service repositoryhere](https://github.com/buraksaralo
 ## Key Features
 
 - Form validation
+- Error handling via Error Boundary
+- API endpoint error messages using [react-toastify](https://github.com/fkhadra/react-toastify)
 - TailwindCSS for styling
 
 ## Getting Started
