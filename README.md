@@ -2,7 +2,7 @@
 
 This project allows users to find email addresses from full name and company URL.
 
-Please visit the [backend service repositoryhere](https://github.com/buraksaraloglu/email-guesser-service).
+Please visit the [backend service repository here](https://github.com/buraksaraloglu/email-guesser-service).
 
 ## Key Features
 
@@ -10,6 +10,8 @@ Please visit the [backend service repositoryhere](https://github.com/buraksaralo
 - Error handling via Error Boundary
 - API endpoint error messages using [react-toastify](https://github.com/fkhadra/react-toastify)
 - TailwindCSS for styling
+
+For invalid request testing, you can use invalid.com as the company URL.
 
 ## Getting Started
 
