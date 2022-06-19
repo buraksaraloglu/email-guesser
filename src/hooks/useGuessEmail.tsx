@@ -15,8 +15,8 @@ export const useGuessEmail = () => {
         throw new Error('Invalid full name');
       }
 
-      if (!isValidUrl(requestBody.domainUrl)) {
-        throw new Error('Invalid domain url');
+      if (!isValidUrl(requestBody.companyUrl)) {
+        throw new Error('Invalid company URL');
       }
       setLoading(true);
 

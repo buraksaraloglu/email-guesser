@@ -1,9 +1,9 @@
 export enum GUESS_EMAIL_FORM_KEYS {
   fullName = 'fullName',
-  domainUrl = 'domainUrl',
+  companyUrl = 'companyUrl',
 }
 
 export interface IGuessEmailForm {
   fullName: string;
-  domainUrl: string;
+  companyUrl: string;
 }

@@ -8,7 +8,7 @@ import GuesserContainer from '.';
 jest.mock('utils/constants', () => ({
   MAX_LENGTHS: {
     FULL_NAME: 20,
-    DOMAIN_URL: 253,
+    COMPANY_URL: 253,
   },
   EMAIL_GUESSER_SERVICE_URL: 'http://localhost:8000',
 }));

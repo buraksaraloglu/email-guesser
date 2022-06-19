@@ -1,6 +1,6 @@
 {
   "name": "email-guesser",
-  "description": "Email guesser app that takes full name and domain url and returns email address",
+  "description": "Email guesser app that takes full name and company url and returns email address",
   "version": "0.1.0",
   "private": true,
   "author": {
@@ -13,12 +13,13 @@
     "email": "buraksaraloglu1@gmail.com"
   },
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext js,jsx,ts,tsx .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|gql|graphql|mdx|vue)\"",
     "serve": "vite preview",
     "test": "jest",
-    "typecheck": "tsc -b",
-    "lint": "eslint src"
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "daisyui": "^2.15.3",
