@@ -6,10 +6,10 @@ const getItemFromLocalStorage = (key: string) => {
   return item ? JSON.parse(item) : null;
 };
 
-export const useLocalStorage = (key: string, initialValue: any) => {
+export const useLocalStorage = (key: string, initialValue: unknown) => {
   const [storedValue, setStoredValue] = useState(() => getItemFromLocalStorage(key) ?? initialValue);
 
-  const setValue = (value: any) => {
+  const setValue = (value: unknown) => {
     try {
       const valueToStore = JSON.stringify(value);
       setStoredValue(value);

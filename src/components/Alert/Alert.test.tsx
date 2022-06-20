@@ -1,24 +1,16 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { render, screen } from '@testing-library/react';
 
 import Alert from '.';
 
+const resetFunction = jest.fn();
 describe('Alert', () => {
-  it('renders without crashing', () => {
-    const testError = new Error('This is a test error');
-    const reset = () => null;
+  test.each([
+    { error: new Error('Error message'), reset: resetFunction, title: undefined },
+    { error: new Error('Error message'), reset: resetFunction, title: 'Test Title' },
+  ])('should render with title: $title', ({ error, reset, title }) => {
+    render(<Alert title={title} error={error} resetErrorBoundary={reset} />);
 
-    render(<Alert error={testError} resetErrorBoundary={reset} />);
-
-    expect(screen.getByText(testError.message)).toBeInTheDocument();
-  });
-
-  it('renders with a title', () => {
-    const testError = new Error('This is a test error');
-    const reset = () => null;
-
-    render(<Alert title="Test" error={testError} resetErrorBoundary={reset} />);
-
-    expect(screen.getByText('Test')).toBeInTheDocument();
-    expect(screen.getByText(testError.message)).toBeInTheDocument();
+    expect(screen.getByText(error.message)).toBeInTheDocument();
   });
 });
